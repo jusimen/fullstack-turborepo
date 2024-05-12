@@ -1,10 +1,12 @@
-import { UserEntity } from '@repo/models';
-import { Button } from '@repo/ui/components/ui/button';
-import { Card, CardContent } from '@repo/ui/components/ui/card';
+import { UserWithProfile } from '@repo/models';
+import { Avatar, AvatarImage } from '@repo/ui/components/ui/avatar';
+import { Card } from '@repo/ui/components/ui/card';
 
-async function getUsers(): Promise<UserEntity[]> {
-	const url = 'http://localhost:8000/users';
-	const response = await fetch(url);
+async function getUsers(): Promise<UserWithProfile[]> {
+	const url = 'http://localhost:8000/users?profile=true';
+	const response = await fetch(url, {
+		cache: 'no-cache',
+	});
 
 	if (!response.ok) {
 		throw new Error('Failed to fetch users');
@@ -16,17 +18,27 @@ async function getUsers(): Promise<UserEntity[]> {
 async function UsersPage() {
 	const users = await getUsers();
 	return (
-		<div className="p-6">
+		<div className="p-6 flex flex-col gap-4">
+			<h1 className="text-3xl">Users</h1>
 			<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
 				{users.map((user) => (
-					<Card className="group">
-						<CardContent className="p-6 flex flex-col gap-4">
-							<div className="flex flex-col gap-2">
+					<Card className="p-4" key={user.id}>
+						<div className="flex gap-4 items-center">
+							<Avatar>
+								<AvatarImage
+									src={user.UserProfile?.avatar || ''}
+								/>
+							</Avatar>
+							<div className="flex flex-col">
 								<div className="text-lg">
-									Email: {user.email}
+									{user.UserProfile?.firstName}{' '}
+									{user.UserProfile?.lastName}
 								</div>
+								<span className="text-slate-500 text-sm">
+									{user.email}
+								</span>
 							</div>
-						</CardContent>
+						</div>
 					</Card>
 				))}
 			</div>

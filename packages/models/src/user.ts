@@ -16,3 +16,7 @@ export class UserProfileEntity implements UserProfile {
 	avatar: string | null;
 	userId: string;
 }
+
+export class UserWithProfile extends UserEntity {
+	UserProfile: UserProfileEntity;
+}

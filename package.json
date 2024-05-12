@@ -15,6 +15,7 @@
 		"db:push": "dotenv -- turbo run db:push",
 		"db:seed": "dotenv -- turbo run db:seed",
 		"db:studio": "dotenv -- turbo run db:studio",
+		"ui:add": "yarn workspace @repo/ui ui:add",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"lint": "turbo run lint",
 		"clean": " turbo run clean && rimraf .turbo node_modules dist bun.lockb"

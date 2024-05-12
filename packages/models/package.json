@@ -1,0 +1,28 @@
+{
+	"name": "@repo/models",
+	"version": "1.0.0",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist/**"
+	],
+	"scripts": {
+		"build": "tsup --dts --clean",
+		"install": "tsup --dts --clean",
+		"generate": "tsup --dts --clean",
+		"clean": "rimraf .turbo node_modules dist"
+	},
+	"dependencies": {
+		"@nestjs/swagger": "7.1.16",
+		"@prisma/client": "^5.7.1",
+		"@swc/core": "^1.3.96",
+		"class-validator": "^0.14.0"
+	},
+	"devDependencies": {
+		"tsup": "8.0.0",
+		"typescript": "^4.5.5",
+		"rimraf": "^3.0.2"
+	}
+}

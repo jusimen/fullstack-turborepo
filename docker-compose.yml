@@ -1,12 +1,12 @@
 version: '3.8'
-name: lms
+name: repo
 
 volumes:
     database:
         driver: local
 
 networks:
-    lms:
+    repo:
         driver: bridge
 
 services:
@@ -18,8 +18,17 @@ services:
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: lms
+            POSTGRES_DB: postgres
         ports:
             - 5432:5432
         networks:
-            - lms
+            - repo
+    redis:
+        image: redis:latest
+        ports:
+            - '6379:6379'
+    rcli:
+        image: redis:latest
+        links:
+            - redis
+        command: redis-cli -h redis

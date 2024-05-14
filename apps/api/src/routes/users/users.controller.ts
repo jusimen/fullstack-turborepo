@@ -37,8 +37,8 @@ export class UsersController {
   findAll(
     @Query('page') page: number = 1,
     @Query('perPage') perPage: number = 50,
-    @Query('profile', ParseBoolPipe) profile: boolean = false,
+    @Query('profile') profile: string = 'false',
   ) {
-    return this.usersService.findAll(+page, +perPage, profile);
+    return this.usersService.findAll(+page, +perPage, profile === 'true');
   }
 }

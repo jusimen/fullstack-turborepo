@@ -9,6 +9,8 @@
 	"private": true,
 	"scripts": {
 		"build": "dotenv -- turbo run build",
+		"build:api": "dotenv -- turbo run build --filter=api...",
+		"build:client": "dotenv -- turbo run build --filter=client...",
 		"dev": "dotenv -- turbo run dev",
 		"generate": "dotenv -- turbo run generate",
 		"db:migrate:deploy": "dotenv -- turbo run db:migrate:deploy",

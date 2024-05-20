@@ -1,3 +1,5 @@
+### ⚠️ This project is still in development and is not ready for production use. ⚠️
+
 # Full-Stack Monorepo Starter Kit
 
 This is a monorepo starter kit for full-stack applications. It uses [Pnpm Workspaces](https://pnpm.io/workspaces) to manage dependencies and [Turborepo](https://turborepo.com/) to manage the monorepo.

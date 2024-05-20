@@ -1,9 +1,11 @@
+export const dynamic = 'force-dynamic';
+
 import { UserWithProfile } from '@repo/models';
 import { Avatar, AvatarImage } from '@repo/ui/components/ui/avatar';
 import { Card } from '@repo/ui/components/ui/card';
 
 async function getUsers(): Promise<UserWithProfile[]> {
-	const url = 'http://localhost:8000/users?profile=true';
+	const url = process.env.NEXT_PUBLIC_API_URL + '/users?profile=true';
 	const response = await fetch(url, {
 		cache: 'no-cache',
 	});

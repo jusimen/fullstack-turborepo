@@ -17,12 +17,12 @@ env:
     PROJECT_ID: fullstack-turborepo # TODO: update Google Cloud project id
     SERVICE: nest-api # TODO: update Cloud Run service name
     REGION: europe-west1 # TODO: update Cloud Run service region
-    GAR_LOCATION: europe-west1-docker.pkg.dev/fullstack-turborepo/cloud-run-docker-repo
+    GAR_LOCATION: europe-west1
 
 jobs:
-    # Build API and Web job in the GitHub Actions workflow.
+    # Build API job in the GitHub Actions workflow.
     build:
-        name: Build API and Web
+        name: Build API
         runs-on: ubuntu-latest
 
         steps:

@@ -20,37 +20,10 @@ env:
     GAR_LOCATION: europe-west1
 
 jobs:
-    # Build API job in the GitHub Actions workflow.
-    build:
-        name: Build API
-        runs-on: ubuntu-latest
-
-        steps:
-            #Checkout step in the GitHub Actions workflow.
-            - name: Checkout
-              uses: actions/checkout@v2
-
-            #Setup Node.js step in the GitHub Actions workflow.
-            - name: Setup Node.js environment
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: 'yarn'
-
-            - name: Install dependencies
-              run: yarn
-
-            - name: Generate Models
-              run: yarn generate
-
-            - name: Build
-              run: yarn build:api
-
     # Deploy API and Web job in the GitHub Actions workflow.
     # API will be deployed to Google Cloud Run
     deploy:
         name: Deploy API to Cloud Run
-        needs: build
         # Add 'id-token' with the intended permissions for workload identity federation
         permissions:
             contents: 'read'
